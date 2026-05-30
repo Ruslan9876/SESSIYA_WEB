@@ -7,7 +7,7 @@ export default defineConfig(({mode}) => {
   const isProduction = mode === 'production';
 
   return {
-    base: isProduction ? '/SESSIYA_WEB/' : '/',
+    base: isProduction ? './' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
