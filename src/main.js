@@ -197,6 +197,11 @@ let tests = [];
 let activeTestId = "";
 let currentReviewFilter = "all";
 
+const STORAGE_KEYS = {
+  tests: "imtihon_test_bank",
+  activeTestId: "imtihon_active_test_id"
+};
+
 // Active running exam session state
 let activeExam = {
   running: false,
@@ -218,7 +223,7 @@ let lastResults = null;
 // 3. Persistence Helpers
 function loadTestsFromStorage() {
   try {
-    const raw = localStorage.getItem("imtihon_test_bank");
+    const raw = localStorage.getItem(STORAGE_KEYS.tests);
     if (raw) {
       tests = JSON.parse(raw);
     } else {
@@ -229,11 +234,25 @@ function loadTestsFromStorage() {
     console.error("Local storage error", err);
     tests = [];
   }
+
+  const storedActive = localStorage.getItem(STORAGE_KEYS.activeTestId);
+  if (storedActive) {
+    activeTestId = storedActive;
+  }
+
+  if (activeTestId && !tests.some(test => test.id === activeTestId)) {
+    activeTestId = "";
+  }
 }
 
 function saveTestsToStorage() {
   try {
-    localStorage.setItem("imtihon_test_bank", JSON.stringify(tests));
+    localStorage.setItem(STORAGE_KEYS.tests, JSON.stringify(tests));
+    if (activeTestId) {
+      localStorage.setItem(STORAGE_KEYS.activeTestId, activeTestId);
+    } else {
+      localStorage.removeItem(STORAGE_KEYS.activeTestId);
+    }
   } catch (err) {
     console.error("Save local storage failed", err);
   }
@@ -362,7 +381,7 @@ function initApp() {
   loadTestsFromStorage();
   
   // Set default active test
-  if (tests.length > 0) {
+  if (!activeTestId && tests.length > 0) {
     activeTestId = tests[0].id;
   }
   
@@ -476,6 +495,7 @@ function renderTestBankTable() {
     btn.addEventListener("click", () => {
       const tId = btn.getAttribute("data-id");
       activeTestId = tId;
+      saveTestsToStorage();
       renderTestBankTable();
       renderSetupDropdown();
       syncSetupSummaries();
@@ -705,6 +725,7 @@ function setupSetupListeners() {
   
   select.addEventListener("change", (e) => {
     activeTestId = e.target.value;
+    saveTestsToStorage();
     syncSetupSummaries();
     updateActiveTestStatistics();
   });
