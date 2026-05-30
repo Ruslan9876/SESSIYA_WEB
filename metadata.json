@@ -1,0 +1,6 @@
+{
+  "name": "Imtihon va Test Tahlili Platformasi",
+  "description": "HTML5, CSS3 va Vanilla JavaScript asosidagi mukammal imtihon topshirish va testlarni tahlil qilish platformasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

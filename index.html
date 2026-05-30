@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imtihon va Test Tahlili Platformasi</title>
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body>
+    <!-- App Main Header -->
+    <header class="header">
+      <div class="header-title-container">
+        <div class="logo-badge">EX</div>
+        <h1>Imtihon va Test Tahlili Platformasi</h1>
+      </div>
+      <div class="header-status">
+        <div class="header-status-dot"></div>
+        <span>Tizim Onlayn</span>
+      </div>
+    </header>
+
+    <main class="app-container">
+      <!-- Nav Tabs -->
+      <nav class="nav-tabs">
+        <button id="tab-upload-btn" class="nav-tab active" data-tab="upload">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          Test Yuklash
+        </button>
+        <button id="tab-preview-btn" class="nav-tab" data-tab="preview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          Testni Ko'rish
+        </button>
+        <button id="tab-setup-btn" class="nav-tab" data-tab="setup">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Imtihon Sozlamalari
+        </button>
+        <button id="tab-quiz-btn" class="nav-tab" data-tab="quiz">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5 z"></path></svg>
+          Imtihon Topshirish
+        </button>
+        <button id="tab-results-btn" class="nav-tab" data-tab="results">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          Natija va Tahlil
+        </button>
+      </nav>
+
+      <!-- View Contents -->
+      <div class="view-content">
+
+        <!-- Tab 1: Upload and Banks -->
+        <div id="view-upload" class="tab-view active-view">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            Test Banki va Tahlilchi
+          </h2>
+          <p>Yangi test savollarini TXT formatida drag-and-drop qiling yoki bosing. Tizim avtomatik tahlil qiladi va xatolarni tekshiradi.</p>
+
+          <div class="grid-2">
+            <!-- Left: Parser Drag & Drop -->
+            <div>
+              <div id="drop-zone" class="drop-zone no-select">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+                <span class="drop-zone-text">TXT Faylini yuklash (Drag-and-Drop yoki bosing)</span>
+                <span class="drop-zone-sub">Formati: 1. Savol... A) Variant B) Variant C) Variant D) Variant. Javob: A [Izoh: ...]</span>
+                <input type="file" id="file-input" accept=".txt" style="display: none;" />
+              </div>
+
+              <div class="presets" style="margin-top: 16px; justify-content: space-between; align-items: center;">
+                <button id="load-sample-btn" class="btn btn-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  Namunaviy Test yuklash (Tarix, Geografiya, AT)
+                </button>
+                <button id="clear-all-tests-btn" class="btn btn-danger btn-sm" style="padding: 6px 12px; font-size: 0.8rem;">Tozalash</button>
+              </div>
+
+              <!-- Parser Warnings -->
+              <div id="parser-warnings" class="warning-panel" style="display: none;">
+                <h4>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  Tahlil xatoliklari (Ogohlantirishlar)
+                </h4>
+                <ul id="warning-list" class="warning-list"></ul>
+              </div>
+            </div>
+
+            <!-- Right: Active Test bank -->
+            <div class="card">
+              <h3 class="card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                 Sizning Testlaringiz Banki
+              </h3>
+              <table class="test-table">
+                <thead>
+                  <tr>
+                    <th>Test nomi</th>
+                    <th>Savollar soni</th>
+                    <th style="width: 120px; text-align: center;">Holati / Amallar</th>
+                  </tr>
+                </thead>
+                <tbody id="test-bank-tbody">
+                  <!-- JS builds rows -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Active Test Statistics and Mode Analysis -->
+            <div class="card" style="margin-top: 16px;" id="selected-test-stats-card">
+              <h3 class="card-title" style="padding-bottom: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                Tanlangan Test To'plami Statistik tahlili
+              </h3>
+              <div id="stats-active-test-container">
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Faol tanlangan test to'plamidagi to'g'ri javob kalitlari taqsimoti va eng ko'p uchraydigan variant:</p>
+                <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                  <!-- Distribution Graphic Bar Gauges -->
+                  <div style="flex: 1; min-width: 180px;">
+                    <div class="stat-bar-wrapper" style="display: flex; flex-direction: column; gap: 8px;" id="selected-test-key-distribution-bars">
+                      <!-- JS builds these dynamic gauges bar representing percentages of A, B, C, D keys -->
+                    </div>
+                  </div>
+                  <!-- Mode analysis calculated badge card -->
+                  <div style="background-color: var(--primary-light); border: 1px solid #d0e1fd; border-radius: var(--radius); padding: 12px; text-align: center; min-width: 140px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <span style="font-size: 0.72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Ko'p Uchraydigan Kalit</span>
+                    <span id="stats-most-frequent-key" style="font-size: 2.2rem; font-weight: 700; color: var(--primary); font-family: 'JetBrains Mono', monospace; line-height: 1; margin: 4px 0;">--</span>
+                    <span id="stats-most-frequent-count" style="font-size: 0.75rem; color: var(--text-muted);">-- ta savolda</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TO'LIQ QO'LLANMA CARD (Step-by-step user guide for test formatting/syntax) -->
+          <div class="card" style="margin-top: 24px;">
+            <div style="padding: 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;" id="toggle-guide-header">
+              <h3 style="margin: 0; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; color: var(--text);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accent-blue"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                Fayl yuklash va test tuzish bo'yicha to'liq qo'llanma (Yo'riqnoma)
+              </h3>
+              <span id="guide-toggle-icon" style="font-size: 0.85rem; font-weight: 600; color: var(--primary);">Ko'rsatish [+]</span>
+            </div>
+            <div id="guide-content-body" style="display: none; padding: 20px; font-size: 0.9rem; line-height: 1.6; color: var(--text); border-top: 1px solid var(--border); background-color: #fafbfc;">
+              <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                    <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--primary); color: white; border-radius: 50%; font-size: 0.75rem; font-weight: 700;">1</span>
+                    Qadam: TXT Matnli Faylni tayyorlash
+                  </h4>
+                  <p style="margin-left: 30px; color: #475569;">Savollarni tayyorlash uchun kompyuteringizdagi oddiy <strong>Bloknot (Notepad)</strong>, <strong>VS Code</strong> yoki boshqa matn muharriridan foydalanib yangi <code>.txt</code> kengaytmali fayl yarating. Tizim maxsus harflar (o'zbekcha o', q, g', h) xatosiz o'qilishi uchun fayl kodirovkasini <strong>UTF-8</strong> (UTF-8 signature ham bo'ladi) deb saqlashni unutmang.</p>
+                </div>
+                
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                    <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--primary); color: white; border-radius: 50%; font-size: 0.75rem; font-weight: 700;">2</span>
+                    Qadam: Sintaksis va formatlash qoidalari (Andoza)
+                  </h4>
+                  <p style="margin-left: 30px; margin-bottom: 10px; color: #475569;">Matn platformamiz tomonidan mukammal va xatosiz tahlil qilinishi hamda avtomatik ravishda uning ichidagi to'liqlik kamchiliklarini topishi uchun quyidagi andaza qoidasiga amal qiling:</p>
+                  <ul style="padding-left: 50px; list-style-type: disc; display: flex; flex-direction: column; gap: 6px; color: #475569;">
+                    <li><strong>Savol boshlanishi:</strong> Har bir savol qator boshidan o'z tartib raqami, unga ulanadigan nuqta yoki yopilgan qavs belgisi bilan boshlanishi zarur (Masalan: <code>1. Biznes ta'limi nima?</code> yoki <code>1) Operatsion tizim qaysi...</code>).</li>
+                    <li><strong>Variantlar tarkibi:</strong> Javob variantlari har bir qator boshidan <code>A)</code>, <code>B)</code>, <code>C)</code>, <code>D)</code> yoki <code>A.</code>, <code>B.</code> kabi yozilishi shart. Har bir variant alohida qatorda tursa ideal tahlil bo'ladi.</li>
+                    <li><strong>Rasmiy to'g'ri javobni ko'rsatish:</strong> Variantlar tugaganidan so'ng yangi qatorda <code>Javob: A</code> yoki <code>Kalit: B</code> yoki <code>Correct: C</code> formatida rasmiy xatosiz to'g'ri harfni kiritishingiz shart.</li>
+                    <li><strong>Tahliliy izoh (Ixtiyoriy):</strong> Natijalarni ko'rib chiqishda foydalanuvchiga uning nega to'g'ri yoki xato ekanligini isbotlash uchun keyingi qatorda <code>Izoh: [matn]</code> yoki <code>Tushuntirish: [batafsil izohli matn]</code> kiritasiz.</li>
+                  </ul>
+                </div>
+
+                <div style="background-color: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-left: 30px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.02)">
+                  <h4 style="font-size: 0.85rem; font-weight: 600; color: #0f172a; margin-top: 0; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    Nusxa olish va sinab ko'rish uchun namuna:
+                  </h4>
+                  <pre style="background: #f8fafc; border: 1px solid var(--border); padding: 12px; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; overflow-x: auto; color: #334155; margin-bottom: 12px; line-height: 1.45;">
+1. Quyidagi qaysi operatsion tizim ochiq kodli (open-source) hisoblanadi?
+A) Windows 11
+B) Linux Kernel
+C) macOS Monterey
+D) MS-DOS
+Javob: B
+Izoh: Linux ochiq manbali va jamoaviy boshqariladigan yadro hisoblanadi.
+
+2. Kompyuter tezkor xotirasi (RAM) nima vazifani bajaradi?
+A) Joriy vaqtda ishlayotgan jarayonlar ma'lumotlarini vaqtinchalik saqlash
+B) Grafik tasvirlarni boshqarish
+C) Doimiy fayllarni uzoq muddat o'chmas qilib saqlash
+D) Tizimdagi xatoliklarni kamaytirish
+Javob: A
+Izoh: RAM faol ilova va tizim buyruqlarini protsessor o'qishi uchun vaqtinchalik saqlaydi.</pre>
+                  <button id="copy-template-btn" class="btn btn-secondary btn-sm" style="font-size: 0.72rem; padding: 5px 10px; line-height: 1.2;">
+                    Shablon nusxasini clipboardga olish
+                  </button>
+                </div>
+
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                    <span style="display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--primary); color: white; border-radius: 50%; font-size: 0.75rem; font-weight: 700;">3</span>
+                    Qadam: Yuklash va bir zumda tahlil
+                  </h4>
+                  <p style="margin-left: 30px; color: #475569;">Tayyorlangan <code>.txt</code> faylingizni yuqoridagi yuklash maydoniga sudrab tashlang yoki unga bosib faylingizni tanlang. Tizim bir lahzada har bir savol qatorini sintaktik tekshirib chiqadi. Agar variantlari kam bo'lsa yoki to'g'ri javob kodi noto'g'ri bo'lsa, darhol ogohlantirish beradi va testni qabul qiladi!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- Tab 5 (New): Test preview / viewing -->
+        <div id="view-preview" class="tab-view">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Testlarni va Savollarni Ko'rish
+          </h2>
+          <p>Yuklangan testlar tarkibidagi barcha savollarni to'g'ri javoblari va izohlari (agar mavjud bo'lsa) bilan batafsil ko'rib chiqishingiz mumkin.</p>
+
+          <div class="card" style="margin-bottom: 24px;">
+            <div class="form-group" style="margin-bottom: 0; max-width: 400px;">
+              <label class="form-label" for="preview-test-select">Ko'rish uchun testni tanlang</label>
+              <select id="preview-test-select" class="form-select">
+                <!-- Javascript fills this with tests -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Question list details with correct answers highlighted in green -->
+          <div id="preview-questions-container" class="review-list">
+            <!-- Dynamic list of questions -->
+          </div>
+        </div>
+
+
+        <!-- Tab 2: Exam Config Setup -->
+        <div id="view-setup" class="tab-view">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            Imtihon Sozlamalarini Moslashtirish
+          </h2>
+          <p>Imtihon shartlarini mustaqil belgilang. Savollar soni, foydali timer va tartib elementlarini sozlashingiz mumkin.</p>
+
+          <div class="grid-2">
+            <!-- Left: Configurations -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <!-- Dropdown Select active Test -->
+              <div class="card" style="margin-bottom: 0;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" for="setup-test-select">Faol Test To'plami</label>
+                  <select id="setup-test-select" class="form-select">
+                    <!-- Dynamic -->
+                  </select>
+                </div>
+              </div>
+
+              <!-- Question Count Config -->
+              <div class="card" style="margin-bottom: 0;">
+                <h3 class="card-title">Savollar sonini tanlash</h3>
+                <div class="form-group" style="margin-bottom: 8px;">
+                  <div class="range-container">
+                    <input type="range" id="setup-q-range" class="range-slider" min="1" max="10" value="5" />
+                    <input type="number" id="setup-q-number" class="form-input range-number-input" min="1" max="10" value="5" />
+                  </div>
+                </div>
+                <div class="form-label">Foydali presetlar:</div>
+                <div class="presets" id="q-count-presets">
+                  <button class="preset-btn" data-val="5">5 ta</button>
+                  <button class="preset-btn" data-val="10">10 ta</button>
+                  <button class="preset-btn" data-val="25">25 ta</button>
+                  <button class="preset-btn" data-val="50">50 ta</button>
+                  <button class="preset-btn" data-val="all">Jami</button>
+                </div>
+              </div>
+
+              <!-- Time Limit Config -->
+              <div class="card" style="margin-bottom: 0;">
+                <h3 class="card-title">Imtihon vaqt cheklovi (Daqiqa)</h3>
+                <div class="form-group" style="margin-bottom: 8px;">
+                  <div class="range-container">
+                    <input type="range" id="setup-time-range" class="range-slider" min="1" max="180" value="15" />
+                    <input type="number" id="setup-time-number" class="form-input range-number-input" min="1" max="180" value="15" />
+                  </div>
+                </div>
+                <div class="form-label">Tezkor daqiqa presetlari:</div>
+                <div class="presets" id="time-presets">
+                  <button class="preset-btn" data-val="5">5 daqiqa</button>
+                  <button class="preset-btn" data-val="10">10 daqiqa</button>
+                  <button class="preset-btn" data-val="15">15 daqiqa</button>
+                  <button class="preset-btn" data-val="30">30 daqiqa</button>
+                  <button class="preset-btn" data-val="60">1 soat (60m)</button>
+                  <button class="preset-btn" data-val="120">2 soat (120m)</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Extra params & Actions -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <!-- Shuffler toggle and summaries -->
+              <div class="card" style="flex: 1; margin-bottom: 0;">
+                <h3 class="card-title">Qo'shimcha opsiyalar</h3>
+                
+                <div class="form-group" style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px;">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="setup-shuffle-toggle" class="toggle-input" checked />
+                    <span class="toggle-slider"></span>
+                    <span>Savollarni tasodifiy aralashtirish (Shuffle questions)</span>
+                  </label>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="setup-shuffle-options-toggle" class="toggle-input" checked />
+                    <span class="toggle-slider"></span>
+                    <span>Variantlarni tasodifiy aralashtirish (Shuffle options)</span>
+                  </label>
+                </div>
+
+                <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted);">
+                  <div style="font-weight: 600; color: var(--text); margin-bottom: 8px;">TAYYORGARLIKNING QISQA XULOSASI:</div>
+                  <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px;">
+                    <li>✓ Tanlangan to'plam: <strong style="color: var(--primary);" id="summary-test-name">-</strong></li>
+                    <li>✓ Jami tayyorlangan savol: <strong id="summary-q-count">0</strong> ta</li>
+                    <li>✓ Beriladigan cheklangan vaqt: <strong id="summary-time-limit">0</strong> daqiqa</li>
+                    <li>✓ Savollar randomizatsiyasi: <strong id="summary-shuffle">Ha, ishda</strong></li>
+                    <li>✓ Variantlar randomizatsiyasi: <strong id="summary-shuffle-options">Ha, ishda</strong></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Action Start Button -->
+              <button id="start-exam-btn" class="btn btn-primary" style="padding: 18px 24px; font-size: 1.1rem; width: 100%; border-radius: var(--radius);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Imtihonni Boshlash
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Tab 3: Active Exam Room -->
+        <div id="view-quiz" class="tab-view">
+          <!-- Quiz not started empty state -->
+          <div id="quiz-not-started-state" class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="9" y2="9"></line></svg>
+            <h3>Faol imtihon mavjud emas</h3>
+            <p style="max-width: 420px; margin-top: 8px;">Imtihonni topshirishni boshlash uchun "Imtihon sozlamalari" tabiga o'ting va o'zingizga qulay shartlarni tanlab imtihonni ishga tushiring.</p>
+            <button id="go-to-setup-btn" class="btn btn-primary" style="margin-top: 16px;">
+              Sozlamalar bo'limiga o'tish
+            </button>
+          </div>
+
+          <!-- Quiz running state layout -->
+          <div id="quiz-running-container" style="display: none;">
+            <div class="quiz-header">
+              <div>
+                <div id="active-quiz-subtitle" style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--primary); text-transform: uppercase;">Default test</div>
+                <h3 id="active-quiz-title" class="quiz-title" style="margin-bottom: 0;">Aralash namunaviy savollar testi</h3>
+              </div>
+              <div class="quiz-meta-panels">
+                <div id="quiz-timer" class="timer-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span id="timer-display">15:00</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress tracker -->
+            <div class="quiz-progress-wrapper">
+              <div class="quiz-progress-text">
+                <span id="quiz-progress-label">Savol: 1 / 10</span>
+                <span id="quiz-progress-pct">Tayyor: 10%</span>
+              </div>
+              <div class="progress-container">
+                <div id="quiz-progress-bar" class="progress-bar"></div>
+              </div>
+            </div>
+
+            <!-- Focus area: Current Question -->
+            <div class="question-container">
+              <div id="active-question-text" class="question-text">
+                1. Sun'iy intellekt sohalarining rivojlanishi qaysi tizimlarga ko'proq tayanadi?
+              </div>
+              <div id="active-options-list" class="options-list">
+                <!-- Javascript will fill Option items -->
+              </div>
+            </div>
+
+            <!-- Control Actions -->
+            <div class="quiz-controls">
+              <button id="quiz-prev-btn" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Oldingisi
+              </button>
+              
+              <div class="quiz-control-group">
+                <button id="quiz-flag-btn" class="btn btn-warning">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  Belgilash (Flag)
+                </button>
+                <button id="quiz-next-btn" class="btn btn-primary">
+                  Keyingisi
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+                <button id="quiz-finish-btn" class="btn btn-danger">
+                  Imtihonni Yakunlash 🏁
+                </button>
+              </div>
+            </div>
+
+            <!-- Question Matrix Navigator Map -->
+            <div class="matrix-container">
+              <div class="matrix-title">
+                <span>Savollar Navigatori (Xaritasi)</span>
+                <div class="matrix-legend">
+                  <div class="legend-item"><div class="legend-color current"></div><span>Hozirgi</span></div>
+                  <div class="legend-item"><div class="legend-color answered"></div><span>Javob berilgan</span></div>
+                  <div class="legend-item"><div class="legend-color flagged"></div><span>Belgilangan</span></div>
+                  <div class="legend-item"><div class="legend-color empty"></div><span>Bo'sh</span></div>
+                </div>
+              </div>
+              <div id="quiz-matrix-grid" class="matrix-grid">
+                <!-- Javascript builds grid numbers -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Tab 4: Results and Review analysis -->
+        <div id="view-results" class="tab-view">
+          <!-- Results empty state -->
+          <div id="results-empty-state" class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <h3>Tahlillar tayyor emas</h3>
+            <p style="max-width: 420px; margin-top: 8px;">Foydalanish bo'yicha imtihon yakunlanganidan so'ng, ushbu sahifada SVG diagrammalar, batafsil xatolar tahlili va tushuntirishlar avtomatik paydo bo'ladi.</p>
+          </div>
+
+          <!-- Results active show layout -->
+          <div id="results-active-container" style="display: none;">
+            <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px;">
+              <h2 style="margin-bottom: 4px;">Imtihon Natijalari va Tahlil</h2>
+              <p id="results-test-info" style="margin-bottom: 0;">Default test - Test topshirilgan vaqt: --.--.---- --:--</p>
+            </div>
+
+            <div class="card">
+              <div class="stats-summary-wrapper">
+                <!-- Radial Circle diagram inside left side -->
+                <div class="radial-chart-container">
+                  <svg class="radial-svg">
+                    <circle class="radial-bg" cx="80" cy="80" r="70"></circle>
+                    <circle id="radial-progress-circle" class="radial-progress" cx="80" cy="80" r="70" stroke-dasharray="439.8" stroke-dashoffset="439.8"></circle>
+                    <text x="80" y="86" text-anchor="middle" class="radial-text-pct" transform="rotate(90, 80, 80)" id="radial-text-pct">0%</text>
+                  </svg>
+                  <div id="rating-badge-container" style="margin-top: 10px;">
+                    <span id="results-rating-badge" class="badge-rating yaxshi">Yaxshi</span>
+                  </div>
+                </div>
+
+                <!-- Numerical Analysis items on right side -->
+                <div class="stats-list">
+                  <div class="stats-item">
+                    <div class="stats-item-label">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                      Jami savollar:
+                    </div>
+                    <div id="stat-total" class="stats-item-value">0</div>
+                  </div>
+                  <div class="stats-item" style="color: var(--success);">
+                    <div class="stats-item-label" style="color: var(--success);">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      To'g'ri javoblar:
+                    </div>
+                    <div id="stat-correct" class="stats-item-value">0</div>
+                  </div>
+                  <div class="stats-item" style="color: var(--error);">
+                    <div class="stats-item-label" style="color: var(--error);">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      Xato javoblar:
+                    </div>
+                    <div id="stat-incorrect" class="stats-item-value">0</div>
+                  </div>
+                  <div class="stats-item" style="color: var(--text-muted);">
+                    <div class="stats-item-label" style="color: var(--text-muted);">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                      Javob berilmaganlar:
+                    </div>
+                    <div id="stat-unanswered" class="stats-item-value">0</div>
+                  </div>
+                  <div class="stats-item">
+                    <div class="stats-item-label">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                      Sarflangan aniq vaqt:
+                    </div>
+                    <div id="stat-time" class="stats-item-value">00:00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- COMPARATIVE STATISTICAL DISTRIBUTION AND MODE ANALYSIS -->
+            <div class="card" style="margin-top: 20px;">
+              <h3 class="card-title" style="padding-bottom: 8px; margin-bottom: 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                Tanlovlar va Kalitlar Statistik Taqsimoti
+              </h3>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 16px;">Ushbu imtihon davomida siz tanlagan va dastur hisoblagan to'g'ri javob kalitlari o'rtasidagi harfma-harf taqsimot va eng ko'p tanlangan variantlar nisbati tahlili:</p>
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+                <!-- User Input Choices frequencies -->
+                <div style="border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; background: #fafbfc;">
+                  <h4 style="font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+                    🎯 Siz tanlagan javoblar taqsimoti
+                  </h4>
+                  <div id="results-user-choice-bars" style="display: flex; flex-direction: column; gap: 8px;">
+                    <!-- JS builds gauges representing user choosing of A, B, C, D, E -->
+                  </div>
+                  <div style="margin-top: 14px; font-size: 0.78rem; color: #475569; background: white; padding: 10px; border-radius: var(--radius); border: 1px solid var(--border); line-height: 1.4;">
+                    Siz eng ko'p tanlagan javob varianti: <strong id="results-user-most-frequent-key" style="color: var(--primary);">--</strong>
+                  </div>
+                </div>
+
+                <!-- Correct Answer Key frequencies -->
+                <div style="border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; background: #fafbfc;">
+                  <h4 style="font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+                    🔑 Testning to'g'ri javoblari taqsimoti (Kalit)
+                  </h4>
+                  <div id="results-key-choice-bars" style="display: flex; flex-direction: column; gap: 8px;">
+                    <!-- JS builds gauges representing keys' true options of A, B, C, D, E -->
+                  </div>
+                  <div style="margin-top: 14px; font-size: 0.78rem; color: #475569; background: white; padding: 10px; border-radius: var(--radius); border: 1px solid var(--border); line-height: 1.4;">
+                    Ushbu testda eng ko'p kelgan to'g'ri javob kaliti: <strong id="results-key-most-frequent-key" style="color: var(--success);">--</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review segment -->
+            <div style="margin-top: 36px;">
+              <h3>Batafsil Savollar Tahlili va Xatolar ustida ishlash</h3>
+              
+              <!-- Review Filter Buttons -->
+              <div class="filters-bar">
+                <button class="filter-btn active" data-filter="all">Hammasi (<span id="count-all">0</span>)</button>
+                <button class="filter-btn" style="border-color: rgba(5, 150, 105, 0.2); color: var(--success);" data-filter="correct">To'g'rilar (<span id="count-correct">0</span>)</button>
+                <button class="filter-btn" style="border-color: rgba(220, 38, 38, 0.2); color: var(--error);" data-filter="incorrect">Xatolar (<span id="count-incorrect">0</span>)</button>
+                <button class="filter-btn" style="border-color: rgba(217, 119, 6, 0.2); color: var(--warning);" data-filter="flagged">Belgilanganlar (<span id="count-flagged">0</span>)</button>
+              </div>
+
+              <!-- Question Review List container -->
+              <div id="results-review-list" class="review-list">
+                <!-- Javascript generates elements dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Confirmation & Over Modals -->
+    <div id="confirm-modal" class="modal-overlay">
+      <div class="modal-content">
+        <h3 id="modal-title" class="modal-title">Imtihonni Yakunlash</h3>
+        <p id="modal-body" class="modal-body">
+          Haqiqatan ham imtihonni hozir yakunlashni istaysizmi? <span id="modal-answered-info">Barcha savollarga javob berdingiz.</span>
+        </p>
+        <div class="modal-actions">
+          <button id="modal-cancel-btn" class="btn btn-secondary">Ortga qaytish</button>
+          <button id="modal-confirm-btn" class="btn btn-primary">Ha, tamomlash</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Entry -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
